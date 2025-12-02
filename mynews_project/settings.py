@@ -25,7 +25,12 @@ SECRET_KEY = 'django-insecure-le_&p9i2=j1jlv^zj&)q1hiiaz0m801^pi#r%#%y1h6s4p0l!_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "ushio-news.onrender.com"
+]
+
 
 
 # Application definition
