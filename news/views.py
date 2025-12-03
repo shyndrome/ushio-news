@@ -11,6 +11,6 @@ def news_detail(request, pk):
 
 def index(request):
     recent_news = News.objects.order_by('-date')[:4]
-    return render(request, 'news/news_index.html', {
+    return render(request, 'news/index.html', {
         'recent_news': recent_news,
     })
