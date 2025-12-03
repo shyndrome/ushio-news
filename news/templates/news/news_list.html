@@ -1,0 +1,7 @@
+<h1>{{ news.title }}</h1>
+<p>{{ news.created_at|date:"Y.m.d" }}</p>
+<div>{{ news.content|linebreaks }}</div>
+
+{% for img in news.images.all %}
+    <img src="{{ img.image.url }}" style="width:100%;">
+{% endfor %}

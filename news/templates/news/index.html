@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>う潮ニュース | トップ</title>
+</head>
+<body>
+
+<h1>最新ニュース</h1>
+
+<ul>
+    {% for article in recent_news %}
+        <li>
+            <a href="{% url 'news_detail' article.pk %}">
+                {{ article.title }}
+            </a>
+            （{{ article.published_at|date:"Y-m-d" }}）
+        </li>
+    {% empty %}
+        <li>記事がありません。</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
