@@ -1,7 +1,48 @@
-<h1>{{ news.title }}</h1>
-<p>{{ news.created_at|date:"Y.m.d" }}</p>
-<div>{{ news.content|linebreaks }}</div>
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link href="{% static 'news.css' %}" rel="stylesheet">
+    <title>News | う潮</title>
+</head>
 
-{% for img in news.images.all %}
-    <img src="{{ img.image.url }}" style="width:100%;">
-{% endfor %}
+<body>
+
+<header>
+    <!-- ここは元のHTMLそのまま -->
+</header>
+
+<div class="pckiji">
+  <h1>News</h1>
+
+  <div class="topnews">
+
+    {% for item in news_list %}
+    <ul class="newsline" id="{{ item.date|date:"Ymd" }}">
+      <li class="newsarticle">
+
+        <p class="date">{{ item.date|date:"Y.m.d" }}</p>
+        <h3>{{ item.title }}</h3>
+
+        <!-- ★本文をそのままHTMLとして表示（改行対応） -->
+        <div class="content">
+            {{ item.content|safe }}
+        </div>
+
+        <!-- ★複数画像を自動で表示 -->
+        {% for img in item.images.all %}
+        <div class="centerphoto">
+            <img src="{{ img.image.url }}" class="newsphoto">
+        </div>
+        {% endfor %}
+
+      </li>
+    </ul>
+    {% endfor %}
+
+  </div>
+</div>
+
+</body>
+</html>

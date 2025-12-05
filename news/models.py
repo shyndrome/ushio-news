@@ -3,10 +3,10 @@ from django.utils.text import slugify
 import uuid
 
 class News(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=255)
     date = models.DateField()
-    content = models.TextField()
-    slug = models.SlugField(unique=True, blank=True)
+    content = models.TextField()   # 今の文章すべてここに入る
+    slug = models.SlugField(unique=True)
 
     class Meta:
         verbose_name = "News"
@@ -21,14 +21,9 @@ class News(models.Model):
         return self.title
 
 class NewsImage(models.Model):
-    news = models.ForeignKey(
-        News, on_delete=models.CASCADE, related_name="images"
-    )
-    image = models.ImageField(upload_to="news_images/")
-
-    class Meta:
-        verbose_name = "News Image"
-        verbose_name_plural = "News Images"
+    news = models.ForeignKey(News, related_name='images', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='news_images/')
+    caption = models.TextField(blank=True)
 
     def __str__(self):
         return f"Image for {self.news.title}"
