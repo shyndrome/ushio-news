@@ -21,9 +21,8 @@ from . import views_api
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('news/', news_views.news_list, name='news_list'),
-    path('news/<int:pk>/', news_views.news_detail, name='news_detail'),
-    path('', news_views.index, name='index'),
+
+    # API
     path("api/news/", views_api.api_news_list, name="api_news_list"),
     path("api/news/<slug:slug>/", views_api.api_news_detail, name="api_news_detail"),
 ]
