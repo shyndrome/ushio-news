@@ -1,6 +1,7 @@
-django
+Django
 gunicorn
-psycopg2-binary
-dj-database-url
+Pillow
 whitenoise
+dj-database-url
 python-dotenv
+psycopg2-binary
