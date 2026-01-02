@@ -23,8 +23,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/news/', views_api.api_news_list),
+    path('api/news/<slug:slug>/', views_api.api_news_detail),
+]
 
-    # API
-    path("api/news/", views_api.api_news_list, name="api_news_list"),
-    path("api/news/<slug:slug>/", views_api.api_news_detail, name="api_news_detail"),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
