@@ -42,16 +42,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'ckeditor',
     'ckeditor_uploader',
+    'rest_framework',
     'news',
 ]
-
-INSTALLED_APPS += ["corsheaders"]
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -59,7 +60,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
@@ -139,3 +139,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
+
+# settings.py の一番下などでOK
+
+# CKEditorの設定
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow" # 画像リサイズ等に必要
+
+# リッチエディタのツールバー設定（シンプルにしたい場合）
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Full',
+        'height': 300,
+        'width': '100%',
+    },
+}

@@ -29,7 +29,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/miho/Desktop/Web/ushio-news/env"
+set -gx VIRTUAL_ENV "/Users/miho/Desktop/Web/ushio-news-git/env"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

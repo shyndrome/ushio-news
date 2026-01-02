@@ -1,4 +1,4 @@
-#!/Users/miho/Desktop/Web/ushio-news/env/bin/python3
+#!/Users/miho/Desktop/Web/ushio-news-git/env/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
