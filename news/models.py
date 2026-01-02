@@ -1,11 +1,12 @@
 from django.db import models
 from django.utils.text import slugify
 import uuid
+from ckeditor.fields import RichTextField
 
 class News(models.Model):
     title = models.CharField(max_length=255)
     date = models.DateField()
-    content = models.TextField()   # 今の文章すべてここに入る
+    content = RichTextField(blank=True, null=True) 
     slug = models.SlugField(unique=True)
 
     class Meta:
