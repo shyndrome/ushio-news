@@ -33,8 +33,6 @@ ALLOWED_HOSTS = [
     "ushio-news.onrender.com"
 ]
 
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -45,10 +43,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
-    'ckeditor',
-    'ckeditor_uploader',
     'rest_framework',
     'news',
+    'cloudinary',
+    'cloudinary_storage',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
@@ -158,3 +158,11 @@ CKEDITOR_CONFIGS = {
         'width': '100%',
     },
 }
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
